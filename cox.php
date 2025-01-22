@@ -1,6 +1,4 @@
 
-
-
 <?php
 //conexión con base de datos
 
@@ -10,9 +8,11 @@ $user = "root";
 $pass = "290515";
 $bd = "Informacion";
 
+
 //new mysqli: crea una nueva instancia u objeto de la clase sql que viene integrada en php
 
 $conexion = new mysqli($host, $user, $pass, $bd);
+$conexion->set_charset("utf8mb4"); //Esta función hacer posible que todos los posibles caracteres en Unicode que es un sistema de de codificación de caracteres, sean correctamente almacenados y precesados en la base de datos de modo que acepta carateres especiales, emojis...
 
 if ($conexion->connect_error){ //conexion es ahora una instancia que puede utilizar los atributos y métodos de la clase sql. connect_error es un atributo que se utiliza para emitir un error
     die("Error de conexión: ". $conexion->connect_error); 
@@ -30,18 +30,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){ // _SERVER es una variable supergloba
     $telefono = $_POST["telefono"];
     $fecha_nacimiento = $_POST["fecha_nacimiento"];
 
-    $sql = "INSERT INTO Personas (nombre, email, ocupacion, telefono, fecha_nacimiento) VALUES ('$nombre', '$email', '$ocupacion', '$telefono', '$fecha_nacimiento')";
 
-    // la variable $sql se esta comportando como una consulta o query
+    $sql = ("INSERT INTO Personas (nombre, email, ocupacion, telefono, fecha_nacimiento) VALUES (?, ?, ?, ?, ?)");
+                         // Función prepare; prepara la consulta como una clase de plantilla segura que puede ejecutarse las veces que sean necesarias además de permitirnos utilizar paramentros en lugar de valores y son indicados como marcadores de posición ?
+    $sentencia = $conexion->prepare($sql);
 
-    if ($conexion->query($sql) === true){ // -> se utiliza como el . (py) para llamar métodos
-        // query es un método de la clase sql incrustada en php que en este caso devuelve true si el insert fue éxitoso por eso se compara con true (bool).
-        echo "Se ha guardado satisfactoriamente un registro.";
+    // La funcion bin_param; asegura los valores insertados contando con automatización interna es decir, utiliza estrategías que garantizan que esos valores seran tratados de forma que no sean maliciosos como en el caso de tratar al código malicioso sql como string (s) en caso de que ese haya sido el tipo de dato definido en bin_param
+    $sentencia->bind_param("sssss", $nombre, $email, $ocupacion, $telefono, $fecha_nacimiento);
+
+
+    if($sentencia->execute() === False){
+        die("Error: ". $sentencia->error);
     } else {
-        echo "Error: ". $sql. "<br>".$conexion->error;
+        echo "El registro se ha insertado satisfactoriamente!";
     }
-}
 
+    // delete de dos registros que se habian guardado incorrectamente debido a la falta de utf8mb4
+
+    $id_1 = 6;
+    $id_2 = 20;
+    
+    $delete = $conexion->prepare("DELETE FROM Personas WHERE id IN (?, ?)");
+
+    if ($delete === False){
+        die("Error al preparar la sentencia: ". $conexion->error);
+    }
+
+    $delete->bind_param("ii", $id_1, $id_2);
+
+    if($delete->execute()){
+        echo "Lod ids se han eliminado satisfactoriamente!";
+    } else {
+        die("Error: ". $delete->error);
+    }
+
+
+
+
+   
+}
 $conexion->close();
 
 ?>
