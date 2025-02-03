@@ -65,41 +65,64 @@ $conexion->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    
+    
     <title>FORMULARIO DE REGISTRO</title>
-    <script src="validar.js"></script>
+
+
+    <link rel="stylesheet" href="css/bootstrap.min.css"> <!-- estilos de bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/> <!-- iconos de awesome -->
+    <link rel="stylesheet" href="style.css"> <!-- estilos personalizados -->
+    <script src="validar.js"></script> 
+
+    
+  
+   
 </head>
 
 <body>
-    <form id="formRegistro" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-        <!-- Creamos un formulario que con action indica la ruta de donde serán enviadas las entradas del formulario, es decir echo imprimie o emite esta ruta a través de htmlspecialchars() esta función protege los datos o página de recibir scripst malisiosos que puedan afectar la seguridad de los usuarios conocidos como XSS (croos-site scripting). La variable superglobal $_SERVER[] tiene como indice "PHP_SELF" esta clave tiene como valor la ruta del archivo actual, luego tenemos el method que a través del atributo post es una forma segura de enviar datos ya que no se guardan ni envian a través de la URL -->
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <form id="formRegistro" class="form-container text-center" autocomplete="off" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+            <h1>Welcome</h1>
+            <div class="mb-3 position-relative">
+                <input type="text" name= "nombre" id="name" placeholder="Nombre" class="form-control rounded-pill px-4 py-3 inputField">
+                <i class="fa-solid fa-user icon"></i>
+                <div id="errorNombre" class="error-message"></div><br>  
+            </div>
+
+            <div class="mb-3 position-relative">
+                <input type="email" name= "email" id="email" placeholder="Email" class="form-control rounded-pill px-4 py-3 inputField">
+                <i class="fa-solid fa-envelope icon"></i>
+                <div id="errorEmail" class="error-message"></div><br>
+            </div>
+
+            <div class="mb-3 position-relative">
+                <input type="text" name= "ocupacion" id="ocupacion" placeholder="Ocupación" class="form-control rounded-pill px-4 py-3 inputField">
+                <i class="fa-solid fa-business-time icon"></i>
+                <div id="errorOcupacion" class="error-message"></div><br>
+            </div>
+
+            <div class="mb-3 position-relative">
+                <input type="tel" name= "telefono" id="tel" placeholder="Teléfono" class="form-control rounded-pill px-4 py-3 inputField">
+                <i class="fa-solid fa-phone icon"></i>
+                <div id="errorTelefono" class="error-message"></div><br>
+            </div>
+
+            <div class="mb-3 position-relative">
+                <input type="date" name= "fecha_nacimiento" id="born" class="form-control rounded-pill px-4 py-3 inputField">  
+                <div id="errorBorn" class="error-message"></div><br>
+            </div>
+            
+           
+            <a href="TAC" class="text-white d-block mb-4">Terminos y Condiones</a>
+
+            <button type="submit" class="btn btn-primary w-100 rounded-pill py-3" value="Enviar" id="register" placeholder="dd/mm/aaaa">Enviar</button><br>
+            <div id="confirmationMessage" class="confirmation-message"></div>
         
-        <h1>Formulario de Registro</h1><br>
-        <h2>Nombre: </h2><input type="text" name= "nombre" id="name" placeholder="Nombre" class="inputField" >
-        <div id="errorNombre" class="error-message"></div><br>
-
         
-        <h2>Email: </h2><input type="email" name="email" id="email" placeholder= "Ej.:hola@gmail.com" id="mail" class="inputField">
-        <div id="errorEmail" class="error-message"></div><br>
-
-       
-      
-        <h2>Ocupación: </h2><input type="text" name="ocupacion" id="ocupacion" placeholder="Ocupación" class="inputField">
-        <div id="errorOcupacion" class="error-message" ></div><br>
-       
-
-        <h2>Teléfono: </h2><input type="text" name= "telefono" id="tel" placeholder="Teléfono" class="inputField" >
-        <div id="errorTelefono" class="error-message"></div><br>
-
-
-        <h2>Fecha de Nacimiento: </h2><input type="date" name="fecha_nacimiento" id="born" class="inputField">
-        <div id="errorBorn" class="error-message"></div><br>
-
-       
-        <input type="submit" value="Enviar" id="register" ><br>
-        <div id="confirmationMessage" class="confirmation-message"></div>
-    </form>
-    <div id="resultado"></div>
+        </form>
+        <div id="resultado"></div>
+    </div>
     
     
 </body>

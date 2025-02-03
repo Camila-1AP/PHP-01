@@ -22,35 +22,35 @@ document.addEventListener('DOMContentLoaded', function() {
       let errorBorn = "";
 
       if (nombre === "") {
-        errorNombre = 'Complete el Nombre.';
+        errorNombre = 'Complete el Nombre ⚠'; // Se agregó símbolo de advertencia a los mensajes de error
         nombreField.classList.add("error");
       } else {
         nombreField.classList.remove('error');
       }
 
       if (email === "") {
-        errorEmail = 'Complete el Email.';
+        errorEmail = 'Complete el Email ⚠';
         emailField.classList.add('error');
       } else {
         emailField.classList.remove('error');
       }
 
       if (ocupacion === "") {
-        errorOcupacion = 'Complete la Ocupación.';
+        errorOcupacion = 'Complete la Ocupación ⚠';
         ocupacionField.classList.add('error');
       } else {
         ocupacionField.classList.remove('error');
       }
 
       if (telefono === "") {
-        errorTelefono = 'Complete el Teléfono.';
+        errorTelefono = 'Complete el Teléfono ⚠';
         telefonoField.classList.add('error');
       } else {
         telefonoField.classList.remove('error');
       }
 
       if (fecha_nacimiento === "") {
-        errorBorn = 'Complete la Fecha de nacimiento.';
+        errorBorn = 'Complete la Fecha de nacimiento ⚠';
         fecha_nacimientoField.classList.add('error');
       } else {
         fecha_nacimientoField.classList.remove('error');
