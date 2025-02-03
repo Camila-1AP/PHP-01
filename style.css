@@ -1,95 +1,135 @@
 
-form{
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    padding-right: 35px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 20px grey;
-    font-family: 'Times New Roman';
-    color: rgb(35, 35, 35);
-    margin-top: 30px;
-
-   
-    
-    
+body {
+    background: linear-gradient(180deg, #2f1d2f 0%, #342f2f 100%);
 }
-
-/* Estilo para los mensajes de error */
-.error-message {
-    color: rgb(144, 59, 59);
-    font-weight: bold;
-    margin-top: 5px;
-}
-
-/* Estilo para los campos de entrada con errores */
-input.error {
-    border: 2px solid transparent;
-    box-shadow: 0px 0px 5px rgb(167, 82, 82) ;
-}
-
 
 
 h1{
-    /*/text-align: center;*/
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
-    font-size: 20 px;
+    padding-bottom: 25px;
     font-weight: bold;
-    color: rgb(37, 36, 36);
-    text-shadow: 0px 0px 20px rgb(192, 188, 188);
+    color: #ffffff;
 
 }
 
-h2{
-    margin-left: 7px;
-    font-size: 18px;
+
+a{
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
+    text-decoration-thickness: 1px !important;
 }
 
-input{
-    border-color: rgb(244, 243, 243);
+a:hover{
+    color:  #d7bed7 !important  ;
+}
+
+.form-container {
+
+    background-color: rgba(210, 200, 200, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 420px;
+    padding: 80px 35px;
+
+}
+
+
+
+.form-control {
+    color: #ffffff !important;
+    background-color: transparent !important;
+    border: 2px solid #9f789f;
+    transition: border-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.form-control:focus {
+    border-color: #dec8deb1;
+    outline: none;
+    box-shadow: none;
+}
+
+
+
+
+
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    border-radius: 50%;
     padding: 5px;
-    margin: 20px;
-    border: none;
-    border-bottom: 1px solid rgb(218, 215, 215);
-    border-radius: 5px;
-    min-width: 505px;
-    margin: auto;
-
-}
+    filter: invert(1);
+    background-color: #7eaf79 !important;
+    
+}   
 
 
-
-
-#register{
-    padding: 5px;
-    padding-left: 4px;
-    padding-right: 4px;
-    margin-left: 1px;
-    margin-right: 1px;
-    background-color: rgb(253, 253, 253);
-    border-color: rgb(244, 243, 243) ;
-    box-shadow: 0px 0px 16pc grey;
-
+input[type="date"]::-webkit-datetime-edit {
+    color: #e5cee5 !important;
     
 
 }
 
-input:hover{
-    background-color: rgb(241, 241, 241) ;
+    
+
+
+
+::placeholder{
+    color: #e5cee5 !important;
 
 }
 
-#register:hover{
-    background-color: rgb(53, 112, 36);
-    color: white;
+
+.icon {
+    position: absolute;
+    top: 26%;
+    right: 27px;
+    transform: translateY(-50%);
+    color: #ffffff;
+    background: linear-gradient(135deg, #6a3b6a, #9f6a9f );
+    padding: 5px;
+    border-radius: 50%;
+ 
 }
+
+
+.form-container a{
+    text-decoration: none;
+
+}
+
+.btn-primary {
+    background-color:  #8f6d8f;
+    border: none;
+    transition: background-color 0.3s ease;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #885988;
+    
+}
+
+
+
+
+.error-message {
+    color: #dddcdc;
+    font-weight: bold;
+    margin-top: 5px;
+    text-align: justify;
+    font-size: 13px;
+}
+
+
+input.error {
+    border: 2px solid transparent;
+    box-shadow: 0px 0px 5px #ffffff;
+}
+
 
 .confirmation-message {
     color: green;
@@ -97,4 +137,10 @@ input:hover{
     margin-left: auto;
     margin-right: auto;
     background-color: transparent;
-  }
+}
+
+
+
+
+
+
